@@ -18,10 +18,9 @@ function divide(first_value, second_value)
     return first_value / second_value;
 }
 
-function display_total(total)
+function display_total(total, intoElement)
 {
-    var output = document.querySelector(".output");
-    output.innerHTML = total;
+    intoElement.innerText = total;
 }
 
-display_total("2");
+display_total(2, document.querySelector(".output"));
