@@ -6,7 +6,8 @@ html{
   float: left;
   border: solid 2px black;
   background: #F1F0F0;
-  width: 30%;
+  width: 310px;
+  border-radius: 10px;
 }
 
 .output{
