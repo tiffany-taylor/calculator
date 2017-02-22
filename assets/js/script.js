@@ -3,7 +3,7 @@ document.querySelector(".button").addEventListener("click", function(event){
     var is_operator = false;
     var first_operand = 0, second_operand = 0;
     
-    if (button_value = "+" || "-" || "*" || "/"(
+    if (button_value = "+" || "-" || "*" || "/")
     {
         is_operator = true;
     }
