@@ -1,36 +1,85 @@
-document.querySelector(".button").addEventListener("click", function(event){
-    var button_value = event.target.value;
-    var is_operator = false;
-    var first_operand = 0, second_operand = 0;
-    
-    if (button_value = "+" || "-" || "*" || "/")
+$(document).ready(function(){
+
+    var test_number_length = function(number)
     {
-        is_operator = true;
+        if (number.length > 9)
+        {
+            total_div.text(number.substr(number.length-9, 9));
+            if (number.length > 15)
+            {
+                number = "";
+                total_div.text("Error");
+            }
+        }
+    };
+    function add(first_operand, second_operand)
+    {
+        return first_operand + second_operand;
     }
-}
+    function subtract(first_operand, second_operand)
+    {
+        return first_operand - second_operand;
+    }
+    function multiply(first_operand, second_operand)
+    {
+        return first_operand * second_operand;
+    }
+    function divide(first_operand, second_operand)
+    {
+        return first_operand / second_operand;
+    }
+    var number = "", old_number = "", operator = "";
+    var output_div = $(".output");
+    output_div.text("0");
 
-function add(first_value, second_value)
-{
-    return first_value + second_value;
-}
+    $(".number").click(function()
+    {
+        number += $(this).val();
+        output_div.text(number);
+        test_number_length(number);
+    })
 
-function subtract(first_value, second_value)
-{
-    return first_value - second_value;
-}
+    $(".addition,.subtraction,.multiplication,.division").click(function()
+    {
+        operator = $(this).val();
+        old_number = number;
+        number = "";
+    });
 
-function multiply(first_value, second_value)
-{
-    return first_value * second_value;
-}
+    $(".clear,.all-clear").click(function()
+    {
+        number = "";
+        output_div.text("0");
+        $(".clearall").click(function()
+        {
+            old_number = "";
+        })
+    })
 
-function divide(first_value, second_value)
-{
-    return first_value / second_value;
-}
-
-function display_total(total, intoElement)
-{
-    intoElement.innerText = total;
-}
-
+    $(".equals").click(function()
+    {
+        var answer = 0;
+        number = Number(number);
+        old_number = Number(old_number);
+        if (operator === "+")
+        {
+            answer = add(old_number, number);
+        }
+        else if (operator === "-")
+        {
+            answer = subtract(old_number, number);
+        }
+        else if (operator === "*")
+        {
+            answer = multiply(old_number, number);
+        }
+        else if (operator === "/")
+        {
+            answer = divide(old_number, number);
+        }
+        answer = String(answer);
+        output_div.text(answer);
+        test_number_length(answer);
+        number = "", old_number = "";
+    })
+});
