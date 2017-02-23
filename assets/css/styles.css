@@ -43,14 +43,12 @@ html{
   border-radius: 10px;
 }
 
-.addition{
-  width: 40%;
-}
 .clear,
 .all-clear{
-  width: 25%;
+  width: 39%;
 }
 
+.addition,
 .subtraction,
 .multiplication,
 .division

@@ -1,17 +1,4 @@
 $(document).ready(function(){
-
-    var test_number_length = function(number)
-    {
-        if (number.length > 9)
-        {
-            total_div.text(number.substr(number.length-9, 9));
-            if (number.length > 15)
-            {
-                number = "";
-                total_div.text("Error");
-            }
-        }
-    };
     function add(first_operand, second_operand)
     {
         return first_operand + second_operand;
@@ -36,7 +23,6 @@ $(document).ready(function(){
     {
         number += $(this).val();
         output_div.text(number);
-        test_number_length(number);
     })
 
     $(".addition,.subtraction,.multiplication,.division").click(function()
@@ -44,6 +30,7 @@ $(document).ready(function(){
         operator = $(this).val();
         old_number = number;
         number = "";
+        $(".output").text("0");
     });
 
     $(".clear,.all-clear").click(function()
@@ -79,7 +66,6 @@ $(document).ready(function(){
         }
         answer = String(answer);
         output_div.text(answer);
-        test_number_length(answer);
         number = "", old_number = "";
     })
 });
